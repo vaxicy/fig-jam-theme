@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/vaxicy/fig-jam-theme/main/store-assets/promo/1400x560.png" alt="Fig Jam Theme promo" width="700">
+  <img src="https://raw.githubusercontent.com/vaxicy/fig-jam-theme/main/store-assets/promo/1400x560.png?v=2" alt="Fig Jam Theme promo" width="700">
 </p>
 
 ## Overview

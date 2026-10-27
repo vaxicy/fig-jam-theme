@@ -157,15 +157,20 @@ def compose_window(size=(1400, 560)):
         cx += draw_chip(d, cx, cy, 34, lab, f_chip, SHELL, DEEP) + 12
     assert cx - 12 <= wx0 - 24, "chip row collides with card"
 
-    # five-swatch legend
+    # five-swatch legend, ordered dark -> light so a wine swatch never sits on the
+    # near-identical dark ground next to a pale one
     sx, sy = M, 300
-    for i, col in enumerate((FRAME, TOOLBAR, BTN, BTN2, PAGE)):
+    for i, col in enumerate((FRAME, TOOLBAR, BTN2, BTN, PAGE)):
         d.rounded_rectangle([sx + i * 46, sy, sx + i * 46 + 34, sy + 34], radius=10, fill=col)
     assert sx + 5 * 46 <= wx0 - 24, "legend collides with card"
 
-    cta(d, M, 372, 210, 54, SHELL, DEEP)
-    assert 372 + 54 <= H - 60, "CTA too close to the bottom"
-    return img, {"card": (wx0, wy0, wx1 - wx0, wy1 - wy0), "cta": (M, 372, 210, 54)}
+    # CTA bottom-aligned with the window card, so the left column spans the same
+    # vertical band instead of leaving the lower third empty
+    cta_y = wy1 - 54
+    cta(d, M, cta_y, 210, 54, SHELL, DEEP)
+    assert cta_y > sy + 34 + 24, "CTA collides with the legend"
+    assert cta_y + 54 <= H - 24, "CTA too close to the bottom"
+    return img, {"card": (wx0, wy0, wx1 - wx0, wy1 - wy0), "cta": (M, cta_y, 210, 54)}
 
 
 # ------------------------------------------------- 440x280: dot palette
@@ -187,11 +192,12 @@ def compose_dots(size=(440, 280)):
     sub = "A warm fig-jam Chrome theme"
     d.text(((W - text_w(d, sub, f_sub)) // 2, 126), sub, font=f_sub, fill=lerp(INK_T, bg, 0.32))
 
-    dots = [BTN, BTN2, hex2rgb("#FFFDF6"), bg, FRAME, TOOLBAR]
+    # five distinct tones (page colour dropped: identical to the background)
+    dots = [tuple(_C["ntp_text"]), FRAME, TOOLBAR, BTN2, BTN]
     r, gap = 11, 12
     total = len(dots) * 2 * r + (len(dots) - 1) * gap
     x0 = (W - total) // 2
-    y0 = 158
+    y0 = 172
     shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow)
     for i in range(len(dots)):
@@ -207,7 +213,7 @@ def compose_dots(size=(440, 280)):
 
     f_cta = font(13, True)
     cw, ch = 128, 34
-    bx, by = (W - cw) // 2, 196
+    bx, by = (W - cw) // 2, 206
     d.rounded_rectangle([bx, by, bx + cw, by + ch], radius=ch // 2, fill=DEEP)
     label = "Try It Now"
     d.text((bx + (cw - text_w(d, label, f_cta)) // 2, by + (ch - f_cta.size) // 2 - 3),
