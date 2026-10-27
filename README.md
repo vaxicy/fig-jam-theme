@@ -51,7 +51,7 @@ The source palette is four steps of one warm red-purple — fig wine, claret, du
 
 | Browser | Palette |
 |:-:|:-:|
-| <img src="https://raw.githubusercontent.com/vaxicy/fig-jam-theme/main/store-assets/screenshots/en/screenshot-1-browser.png" width="420" alt="Fig Jam New Tab"> | <img src="https://raw.githubusercontent.com/vaxicy/fig-jam-theme/main/store-assets/screenshots/en/screenshot-2-palette.png" width="420" alt="Fig Jam palette"> |
+| <img src="https://raw.githubusercontent.com/vaxicy/fig-jam-theme/main/store-assets/screenshots/en/screenshot-1-browser.png" width="420" alt="Fig Jam New Tab"> | <img src="https://raw.githubusercontent.com/vaxicy/fig-jam-theme/main/store-assets/screenshots/en/screenshot-2-palette.png?v=2\" width="420" alt="Fig Jam palette"> |
 
 ## Installation
 

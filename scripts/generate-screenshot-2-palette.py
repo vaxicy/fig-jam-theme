@@ -33,7 +33,9 @@ W, H = 1280, 800
 MARGIN = 64
 RIGHT = W - MARGIN
 
-BG = (74, 10, 40)                        # espresso — outside the swatch set
+BG = (40, 34, 38)                        # neutral plum-grey — outside the swatch set
+                                         # (the old #4A0A28 equalled the Ink card, so
+                                         #  that card vanished into the background)
 TEXT_MAIN = (242, 218, 206)
 TEXT_DIM = (196, 152, 160)
 BORDER = (140, 60, 90)
@@ -76,6 +78,13 @@ def main():
         ("Ink", "#4A0A28", "Text / links"),
     ]
     ink = (74, 10, 40)
+
+    # the background must not repeat any swatch, otherwise that card disappears
+    for _name, _hx, _role in swatches:
+        _c = hex2rgb(_hx)
+        _delta = max(abs(BG[i] - _c[i]) for i in range(3))
+        assert _delta >= 18, "background %s is too close to swatch %s %s (delta %d)" % (
+            "#%02X%02X%02X" % BG, _name, _hx, _delta)
 
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
