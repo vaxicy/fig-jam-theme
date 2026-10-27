@@ -86,7 +86,7 @@ Ready to paste into the store listing (also kept in `store-assets/store-descript
 | `store-assets/promo/440x280.png` | Small promo tile |
 | `store-assets/promo/1400x560.png` | Marquee promo tile |
 | `store-assets/screenshots/en/screenshot-1-browser.png` | Browser mockup screenshot (1280×800) |
-| `store-assets/screenshots/en/screenshot-2-palette.png?v=3` | Palette introduction screenshot (1280×800) |
+| `store-assets/screenshots/en/screenshot-2-palette.png` | Palette introduction screenshot (1280×800) |
 | `store-assets/store-description.txt` | Store listing description |
 | `scripts/generate-logo-vector.py` | Render all SVG logo candidates with headless Chromium, build contact sheets, export `logo/logo.png` from `SELECTED` |
 | `scripts/generate-screenshot-headless.py` | Regenerate the browser mockup via Playwright |
